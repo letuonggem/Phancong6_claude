@@ -1,0 +1,5 @@
+{
+  "name": "Quản lý Phan cong THCS NH",
+  "description": "Ứng dụng quản lý phân công giảng dạy, kiêm nhiệm và định mức tiết dạy dành cho trường THCS.",
+  "requestFramePermissions": []
+}
