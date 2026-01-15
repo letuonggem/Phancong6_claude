@@ -493,4 +493,29 @@ const App = () => {
                             <div className="flex gap-2">
                                 <button 
                                     onClick={() => setSelectedIds(prevWeekData.teachers.filter((t:any) => !teachers.some((ct:any) => ct.id === t.id)).map((x:any)=>x.id))} 
-                                    className="px-4 py-2 bg-white text-indigo-600 rounded-lg text-[10px] font-black
+                                    className="px-4 py-2 bg-white text-indigo-600 rounded-lg text-[10px] font-black hover:bg-indigo-50 transition-colors"
+                                >
+                                    Chọn tất cả
+                                </button>
+                                <button 
+                                    onClick={() => setSelectedIds([])} 
+                                    className="px-4 py-2 bg-white text-slate-600 rounded-lg text-[10px] font-black hover:bg-slate-50 transition-colors"
+                                >
+                                    Bỏ chọn
+                                </button>
+                                <button 
+                                    onClick={copySelectedFromPrevious}
+                                    disabled={selectedIds.length === 0}
+                                    className="px-4 py-2 bg-indigo-600 text-white rounded-lg text-[10px] font-black hover:bg-indigo-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                                >
+                                    Copy đã chọn ({selectedIds.length})
+                                </button>
+                            </div>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                            {prevWeekData.teachers.filter((t:any) => !teachers.some((ct:any) => ct.id === t.id)).map((t: any) => (
+                                <div 
+                                    key={t.id}
+                                    onClick={() => setSelectedIds(prev => prev.includes(t.id) ? prev.filter(id => id !== t.id) : [...prev, t.id])}
+                                    className={`p-4 rounded-xl cursor-pointer transition-all ${selectedIds.includes(t.id) ? 'bg-indigo-600 text-white shadow-lg' : 'bg-white text-slate-700 hover:bg-indigo-50'}`}
+                                >
